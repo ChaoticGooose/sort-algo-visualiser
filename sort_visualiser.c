@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
         printf("Usage: ./visulise <elements>");
         return 1;
     }
-    
+
     size_t n = atoi(argv[1]);
     int list[n];
 
@@ -20,21 +20,21 @@ int main(int argc, char* argv[])
     {
         list[i] = i;
     }
-    
+
     randomise(list, &n);
 
-    clock_t t; 
+    clock_t t;
     t = clock();
-    int* sorted = selectionSort(list, n);
+    int* sorted = bubbleSort(list, n);
     t = clock() - t;
-    
-    double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds 
-    
+
+    double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds
+
     for (int i = 0; i < n; i++)
     {
         printf("%i ", sorted[i]);
     }
     printf("\n");
 
-    printf("took %f seconds to execute \n", time_taken); 
+    printf("took %f seconds to execute \n", time_taken);
 }

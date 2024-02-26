@@ -35,7 +35,7 @@ int* bogoSort(int* numbers, size_t n)
     // randomise array
     while (!sorted(numbers, &n))
     {
-        randomise(numbers, &n); 
+        randomise(numbers, &n);
     }
 
     return numbers;
@@ -47,16 +47,49 @@ int* selectionSort(int* numbers, size_t n)
     {
         return numbers;
     }
-    
-    for (int i = 0; i < n; i++)
+
+    for (int i = 0; i < n-1; i++)
     {
-        for (int j = i; j < n; j++)
+        /* assume min is first elem */
+        int min = i;
+        for (int j = i+1; j < n; j++)
         {
-            if (numbers[i] > numbers[j])
+            if (numbers[j] < numbers[min])
             {
-                int tmp = numbers[i];
-                numbers[i] = numbers[j];
-                numbers[j] = tmp;
+                min = j;
+                continue;
+            }
+        }
+
+        /* swap i and min */
+        if (min != i)
+        {
+            int tmp = numbers[min];
+            numbers[min] = numbers[i];
+            numbers[i] = tmp;
+        }
+    }
+
+    return numbers;
+}
+
+int* bubbleSort(int* numbers, size_t n)
+{
+    if (sorted(numbers, &n))
+    {
+        return numbers;
+    }
+
+    for (int i = 0; i < n+1; i++)
+    {
+        for (int j = 0; j < n-1; j++)
+        {
+            if (numbers[j] > numbers[j+1])
+            {
+                /* swap numbers */
+                int tmp = numbers[j];
+                numbers[j] = numbers[j+1];
+                numbers[j+1] = tmp;
             }
         }
     }
