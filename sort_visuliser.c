@@ -25,10 +25,16 @@ int main(int argc, char* argv[])
 
     clock_t t; 
     t = clock();
-    int* sorted = bogoSort(list, n);
+    int* sorted = selectionSort(list, n);
     t = clock() - t;
     
     double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds 
- 
+    
+    for (int i = 0; i < n; i++)
+    {
+        printf("%i ", sorted[i]);
+    }
+    printf("\n");
+
     printf("took %f seconds to execute \n", time_taken); 
 }

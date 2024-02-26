@@ -27,11 +27,6 @@ bool sorted(int* numbers, size_t* n)
 
 int* bogoSort(int* numbers, size_t n)
 {
-    if (n < 1)
-    {
-        return numbers;
-    }
-
     // check if array is sorted
     if (sorted(numbers,&n))
     {
@@ -41,6 +36,29 @@ int* bogoSort(int* numbers, size_t n)
     while (!sorted(numbers, &n))
     {
         randomise(numbers, &n); 
+    }
+
+    return numbers;
+}
+
+int* selectionSort(int* numbers, size_t n)
+{
+    if (sorted(numbers, &n))
+    {
+        return numbers;
+    }
+    
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < n; j++)
+        {
+            if (numbers[i] > numbers[j])
+            {
+                int tmp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = tmp;
+            }
+        }
     }
 
     return numbers;
