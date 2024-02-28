@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 
     clock_t t;
     t = clock();
-    int* sorted = bubbleSort(list, n);
+    int* sorted = mergeSort(list, n);
     t = clock() - t;
 
     double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds
