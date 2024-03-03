@@ -23,9 +23,16 @@ int main(int argc, char* argv[])
 
     randomise(list, &n);
 
+    // print list before sorting
+    for (int i = 0; i < n; i++)
+    {
+        printf("%i ", list[i]);
+    }
+    printf("\n");
+
     clock_t t;
     t = clock();
-    int* sorted = mergeSort(list, n);
+    int* sorted = quickSort(list, n);
     t = clock() - t;
 
     double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds

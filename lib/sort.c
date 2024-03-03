@@ -39,6 +39,29 @@ int* bogoSort(int* numbers, size_t n)
     return numbers;
 }
 
+int* insertionSort(int* numbers, size_t n)
+{
+    if (sorted(numbers, &n))
+    {
+        return numbers;
+    }
+
+    for (int i = 1; i < n; i++)
+    {
+        int key = numbers[i];
+        int j = i - 1;
+
+        while (j >= 0 && numbers[j] > key)
+        {
+            numbers[j+1] = numbers[j];
+            j = j - 1;
+        }
+        numbers[j+1] = key;
+}
+
+    return numbers;
+}
+
 int* selectionSort(int* numbers, size_t n)
 {
     if (sorted(numbers, &n))
@@ -115,6 +138,40 @@ int* mergeSort(int* numbers, size_t n)
     left = mergeSort(left, left_n);
     right = mergeSort(right, right_n);
 
+
+    return numbers;
+}
+
+int* quickSort(int* numbers, size_t n)
+{
+    if (n < 2)
+    {
+        return numbers;
+    }
+
+    int pivot = n-1;
+    int i = -1;
+    int j = 0;
+
+    while (j < pivot)
+    {
+        if (numbers[j] < numbers[pivot])
+        {
+            i++;
+            int tmp = numbers[i];
+            numbers[i] = numbers[j];
+            numbers[j] = tmp;
+        }
+        j++;
+    }
+    
+    i++;
+    int tmp = numbers[i];
+    numbers[i] = numbers[pivot];
+    numbers[pivot] = tmp;
+
+    quickSort(numbers, i);
+    quickSort(numbers + i, n - i);
 
     return numbers;
 }
