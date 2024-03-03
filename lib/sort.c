@@ -1,11 +1,12 @@
-#include <math.h>
 #include <stdio.h>
+#include <time.h>
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
 void randomise(int* numbers, size_t* n)
 {
+    srand(time(NULL));
     for (int i = 0; i < *n - 1; i++) 
     {
         size_t j = i + rand() / (RAND_MAX / (*n - i) + 1);
@@ -144,6 +145,7 @@ int* mergeSort(int* numbers, size_t n)
 
 int* quickSort(int* numbers, size_t n)
 {
+    // base case
     if (n < 2)
     {
         return numbers;
@@ -157,6 +159,7 @@ int* quickSort(int* numbers, size_t n)
     {
         if (numbers[j] < numbers[pivot])
         {
+            // swap numbers[i] and numbers[j]
             i++;
             int tmp = numbers[i];
             numbers[i] = numbers[j];
@@ -165,6 +168,7 @@ int* quickSort(int* numbers, size_t n)
         j++;
     }
     
+    // Swap numbers[i+1] and numbers[pivot]
     i++;
     int tmp = numbers[i];
     numbers[i] = numbers[pivot];
